@@ -9,6 +9,7 @@ target/
 test-output/
 
 # Eclipse
+.exe
 .classpath
 .project
 .settings/

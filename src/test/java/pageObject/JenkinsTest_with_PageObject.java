@@ -2,6 +2,7 @@ package pageObject;
 
 import java.util.Arrays;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -39,11 +40,26 @@ public class JenkinsTest_with_PageObject {
 	}
 
 	@Test
-	public void openPage() {
+	public void tst_JenkinsPageObject() {
 		driver.get(base_url);
 		PageObject page = new PageObject(driver);
 		page.autorise(userName, userPassword);
 		Assert.assertTrue(page.pageContains("Включить автообновление страниц"));
+		
+		//Manage Jenkins
+		page.clickManageJenkins();
+		Assert.assertTrue(page.pageContains_dtManageUsers("Управление пользователями"));
+		Assert.assertTrue(page.pageContains_ddModifyUsers("Создание, удаление и модификция пользователей, имеющих право доступа к Jenkins"));
+		
+		//2. Click ManageUser, available CreateUser
+		page.find_CreateUser();
+		page.check_ValuableForm5Fields();
+
+		//4. Enter data in form to create new user
+		page.enterDataInForm();
+		//Assert.assertTrue(page.pageContains_lineNewUserName(page.enter_username));
+		page.deleteUser();
+
 	}
 
 }
