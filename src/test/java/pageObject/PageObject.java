@@ -31,7 +31,8 @@ public class PageObject {
 
 	// искомые элементы на странице
 
-	// авторизация
+	// авторизация. при первом запуске была такая. потом сценарий поменялся. меняла
+	// только в PageFactory
 	By input_name = By.xpath("//input[@id='j_username']");
 	By input_password = By.xpath("//input[@name='j_password']");
 	By checkButton_rememberMe = By.xpath("//table/tbody/tr[3]/td[2]");

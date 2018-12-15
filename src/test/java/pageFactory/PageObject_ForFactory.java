@@ -40,12 +40,12 @@ public class PageObject_ForFactory {
 	@FindBy(xpath = "//input[@name='j_password']")
 	private WebElement input_password;
 
-	@FindBy(xpath = "//table/tbody/tr[3]/td[2]")
+	@FindBy(xpath = "//div[@class='Checkbox-indicator']")
 	private WebElement checkButton_rememberMe;
-
-	@FindBy(xpath = "//button[@id='yui-gen1-button']")
+	
+	@FindBy(xpath = "//input[@class='submit-button primary']")
 	private WebElement button_enterAuth;
-
+	
 	@FindBy(xpath = "//a[contains(text(),'Включить автообновление страниц')]")
 	private WebElement enterRefresh;
 
@@ -92,7 +92,7 @@ public class PageObject_ForFactory {
 
 	@FindBy(xpath = "//*[@id='people']/tbody/tr[3]/td[2]/a")
 	private WebElement lineNewUserName;
-
+	
 	// Delete user
 	@FindBy(xpath = "//a[@href='user/someuser/delete']")
 	private WebElement deleteUser;
@@ -122,17 +122,13 @@ public class PageObject_ForFactory {
 		return ddModifyUsers.getText().contentEquals(search_string);
 	}
 	
-	public boolean pageContains_AreYouSureAboutDeleting(String search_string) {
-		return areYouSureAboutDeleting.getText().contentEquals(search_string);
+	public String pageContains_AreYouSureAboutDeleting() {
+		return areYouSureAboutDeleting.getText();
 	}
 
-	public boolean pageContains_lineNewUserName(String enter_username) {
-		try {
-			lineNewUserName.isDisplayed();
-			return true;
-		} catch (NoSuchElementException e) {
-			return false;
-		}
+
+	public String pageContains_lineNewUserName() {
+		return lineNewUserName.getText();
 	}
 
 	public boolean pageAbsent_lineUserName() {
