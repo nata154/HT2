@@ -1,6 +1,5 @@
 package pageFactory;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -42,10 +41,10 @@ public class PageObject_ForFactory {
 
 	@FindBy(xpath = "//div[@class='Checkbox-indicator']")
 	private WebElement checkButton_rememberMe;
-	
+
 	@FindBy(xpath = "//input[@class='submit-button primary']")
 	private WebElement button_enterAuth;
-	
+
 	@FindBy(xpath = "//a[contains(text(),'Включить автообновление страниц')]")
 	private WebElement enterRefresh;
 
@@ -88,11 +87,10 @@ public class PageObject_ForFactory {
 
 	@FindBy(xpath = "//table[@id='people']/tbody/tr[3]")
 	private WebElement lineNewUser;
-	// "//table[@id='people']/tbody/tr[3]"
 
 	@FindBy(xpath = "//*[@id='people']/tbody/tr[3]/td[2]/a")
 	private WebElement lineNewUserName;
-	
+
 	// Delete user
 	@FindBy(xpath = "//a[@href='user/someuser/delete']")
 	private WebElement deleteUser;
@@ -121,19 +119,18 @@ public class PageObject_ForFactory {
 	public boolean pageContains_ddModifyUsers(String search_string) {
 		return ddModifyUsers.getText().contentEquals(search_string);
 	}
-	
+
 	public String pageContains_AreYouSureAboutDeleting() {
-		return areYouSureAboutDeleting.getText();
+		return areYouSureAboutDeleting.getText().substring(0, areYouSureAboutDeleting.getText().indexOf('?') + 1);
 	}
 
-
 	public String pageContains_lineNewUserName() {
-		return lineNewUserName.getText();
+		return lineNewUserName.getText().trim();
 	}
 
 	public boolean pageAbsent_lineUserName() {
 		try {
-			lineNewUser.isDisplayed();
+			lineNewUser.getText().trim();
 			return true;
 		} catch (NoSuchElementException e) {
 			return false;
@@ -173,8 +170,6 @@ public class PageObject_ForFactory {
 	// Manage Jenkins
 	public PageObject_ForFactory clickManageJenkins() {
 		manageJenkins.click();
-		// dtManageUsers.click();//&&&&
-		// ddModifyUsers.click();//&&&&
 		return this;
 	}
 

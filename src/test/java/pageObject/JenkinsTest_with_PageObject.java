@@ -48,7 +48,7 @@ public class JenkinsTest_with_PageObject {
 
 		// Manage Jenkins
 		page.clickManageJenkins();
-		Assert.assertTrue(page.pageContains_dtManageUsers("Управление пользователями"));// хардкод
+		Assert.assertTrue(page.pageContains_dtManageUsers("Управление пользователями"));
 		Assert.assertTrue(page.pageContains_ddModifyUsers(
 				"Создание, удаление и модификция пользователей, имеющих право доступа к Jenkins"));
 
@@ -62,8 +62,8 @@ public class JenkinsTest_with_PageObject {
 
 		// 5. Delete user
 		page.deleteUser();
-		// Assert.assertTrue(page.pageContains_AreYouSureAboutDeleting("Вы уверены, что
-		// хотите удалить пользователя из Jenkins?"));
+		Assert.assertEquals(page.pageContains_AreYouSureAboutDeleting(),
+				"Вы уверены, что хотите удалить пользователя из Jenkins?");
 		page.deleteUserSure();
 		Assert.assertTrue(page.pageAbsent_lineUserName());// не падает, когда строка есть cтрока
 		Assert.assertFalse(page.pageAbsent_isAbsentDeleteUser());// не падает, когда строка есть cтрока

@@ -35,8 +35,8 @@ public class PageObject {
 	// только в PageFactory
 	By input_name = By.xpath("//input[@id='j_username']");
 	By input_password = By.xpath("//input[@name='j_password']");
-	By checkButton_rememberMe = By.xpath("//table/tbody/tr[3]/td[2]");
-	By button_enterAuth = By.xpath("//button[@id='yui-gen1-button']");
+	By checkButton_rememberMe = By.xpath("//div[@class='Checkbox-indicator']");
+	By button_enterAuth = By.xpath("//input[@class='submit-button primary']");
 	By enterRefresh = By.xpath("//a[contains(text(),'Включить автообновление страниц')]");
 
 	// Manage Jenkins
@@ -83,6 +83,11 @@ public class PageObject {
 
 	public boolean pageContains_lineNewUserName(String enter_username) {
 		return driver.findElement(lineNewUserName).getText().contentEquals(enter_username);
+	}
+
+	public String pageContains_AreYouSureAboutDeleting() {
+		return driver.findElement(areYouSureAboutDeleting).getText().substring(0,
+				driver.findElement(areYouSureAboutDeleting).getText().indexOf('?') + 1);
 	}
 
 	public boolean pageContains_AreYouSureAboutDeleting(String search_string) {

@@ -64,26 +64,12 @@ public class JenkinsTest_with_PageFactory {
 
 		// 5. Delete user
 		page.deleteUser();
-		// Assert.assertEquals(page.pageContains_AreYouSureAboutDeleting(), "Вы уверены,
-		// что хотите удалить пользователя из Jenkins?\r\nДа");// how to find xpath this
-		// text&
+		Assert.assertEquals(page.pageContains_AreYouSureAboutDeleting(),
+				"Вы уверены, что хотите удалить пользователя из Jenkins?");
 		page.deleteUserSure();
-		Assert.assertFalse(page.pageAbsent_lineUserName(), "Was found NewUser line while DeleteUser");// не падает,
-																										// когда строка
-																										// есть cтрока
-		Assert.assertFalse(page.pageAbsent_isAbsentDeleteUser(), "Was found DeleteUser line while DeleteUser");// не
-																												// падает,
-																												// когда
-																												// строка
-																												// есть
-																												// cтрока
-		Assert.assertFalse(page.pageAbsent_isAbsentDeleteAdmin(), "Was found DeleteUserAdmin line while DeleteUser");// не
-																														// падает,
-																														// когда
-																														// строка
-																														// есть
-																														// cтрока
-
+		Assert.assertFalse(page.pageAbsent_lineUserName(), "Was found NewUser line while DeleteUser");// не падает, когда строка есть cтрока
+		Assert.assertFalse(page.pageAbsent_isAbsentDeleteUser(), "Was found DeleteUser line while DeleteUser");// не падает, когда строка есть cтрока
+		Assert.assertFalse(page.pageAbsent_isAbsentDeleteAdmin(), "Was found DeleteUserAdmin line while DeleteUser");// не падает, когда строка есть cтрока
 	}
 
 }
